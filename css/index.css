@@ -1,0 +1,39 @@
+#banner {
+    background-image:  url('../img/banner2.jpg');
+}
+
+main p {
+    text-align: justify;
+    line-height: 1.6;
+}
+
+#panel-principal {
+  background-color: rgba(0, 0, 0, 0.6);;
+  border: 1px solid var(--textocolor);
+  border-radius: 10px;
+  padding: 30px;
+  max-width: 800px;
+  width: 100%;
+  margin: 40px auto;
+}
+
+
+#intro-video {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    gap: 20px;
+    width: 100%;
+}
+
+#destacado {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    gap: 20px;
+    width: 100%;
+}
