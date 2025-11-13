@@ -1,0 +1,130 @@
+:root {
+  --textocolor: rgb(187, 213, 186);
+  --hovertextocolor: rgb(193, 116, 78);
+  --hovertextocolor2: rgb(193, 78, 78);
+}
+
+@font-face {
+    font-family: 'Standford Regular';
+    src: url('../fonts/standfordregular.ttf') format('truetype');
+}
+
+body {
+    margin: auto;
+    padding: 0;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    padding-left: 40px;
+    padding-right: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #000000a6;
+    background-image: url('../img/bosque2.jpg');
+    background-size: cover;
+    background-position: center top;
+    background-attachment: fixed;
+    backdrop-filter: blur(10px);
+    /* -webkit-backdrop-filter: brightness(60%) blur(10px); */
+}
+
+header {
+    width:  100%;
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav {
+    width: 95%;
+    height:  50px;
+    border-radius: 15px;
+    margin: 10px 0px 10px 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    background-color: rgb(34, 41, 28);
+}
+
+#banner {
+    width: 100%;
+    height:  100%;
+    margin: 20px;
+    background-size: cover;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border-radius: 0px 0px 15px 15px;
+}
+
+
+h1 {
+    color: var(--textocolor);
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-family: Standford Regular, Arial, Helvetica, sans-serif;
+    font-size: 70px;
+    font-weight: normal;
+}
+
+a{
+    color: var(--textocolor);
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a:hover{ 
+    color: var(--hovertextocolor);
+    text-decoration: none;
+}
+
+p{
+    color: var(--textocolor);
+}
+
+h2 {
+    color: var(--textocolor);
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-family: Standford Regular, Arial, Helvetica, sans-serif;
+    font-size: 50px;
+    font-weight: normal;
+}
+
+h3 {
+    color: var(--textocolor);
+}
+
+h4{
+    color: var(--textocolor);
+}
+
+ol{
+    color: var(--textocolor);
+}
+
+table, th, td {
+    color: var(--textocolor);
+    text-align: left;
+}
+
+th {
+    background-color: #444;
+    color: #fff;
+}
+
+tr:nth-child(even) {
+background-color: #454745;
+}
+
+tr {
+background-color: #3c3f41;
+}
