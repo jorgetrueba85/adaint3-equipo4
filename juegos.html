@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juegos - Gravity Falls</title>
+  <link rel="stylesheet" href="css/general.css">
+  <link rel="stylesheet" href="css/juegos.css">
+</head>
+<body>
+  <header>
+    <div id="banner">
+      <img src="img/logo.png" alt="Logo de Gravity Falls" width="180">
+    </div>
+  </header>
+  <nav>
+      <a href="index.html">Inicio</a>
+      <a href="mysteryshack.html">Mystery Shack</a>
+      <a href="diario.html">Diarios</a>
+      <a href="personajes.html">Personajes</a>
+      <a href="episodios.html">Episodios</a>
+      <a href="form.html">Unete a la Sociedad</a>
+  </nav>
+  <h1>Espacio de Juegos</h1>
+  <main id="games-container">
+    <div class="game-card">
+      <h2>Memoria de Símbolos</h2>
+      <p>¿Puedes recordar todos los símbolos del diario?</p>
+      <div id="memory-game" class="game-board">
+        <div class="card" data-symbol="arbol"></div>
+        <div class="card" data-symbol="arbol"></div>
+        <div class="card" data-symbol="estrella"></div>
+        <div class="card" data-symbol="estrella"></div>
+        <div class="card" data-symbol="mano"></div>
+        <div class="card" data-symbol="mano"></div>
+        <div class="card" data-symbol="llama"></div>
+        <div class="card" data-symbol="llama"></div>
+        <div class="card" data-symbol="pez"></div>
+        <div class="card" data-symbol="pez"></div>
+        <div class="card" data-symbol="piramide"></div>
+        <div class="card" data-symbol="piramide"></div>
+      </div>
+      <button id="reset-memory" class="game-button">Reiniciar</button>
+      <p id="memory-status" class="game-status"></p>
+    </div>
+
+    <div class="game-card">
+      <h2>Adivina el Personaje</h2>
+      <p>Responde las preguntas sobre los personajes de Gravity Falls</p>
+      <div id="quiz-game" class="game-content">
+        <div id="question-container">
+          <p id="question-text"></p>
+          <div id="answers-container"></div>
+        </div>
+        <button id="next-question" class="game-button" style="display:none;">Siguiente</button>
+      </div>
+      <p id="quiz-score" class="game-status">Puntuación: 0/0</p>
+    </div>
+
+    <div class="game-card">
+      <h2>Descifra el Código</h2>
+      <p>Bill Cipher te envió un mensaje codificado. ¿Puedes descifrarlo?</p>
+      <div id="cipher-game" class="game-content">
+        <p id="cipher-text" class="cipher-display"></p>
+        <input type="text" id="cipher-input" placeholder="Escribe tu respuesta aquí" class="cipher-input">
+        <button id="check-cipher" class="game-button">Verificar</button>
+        <p id="cipher-result" class="game-status"></p>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <p>&copy; 2025 Derechos Reservados</p>
+  </footer>
+  <script src="js/juegos.js"></script>
+</body>
+</html>

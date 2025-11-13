@@ -1,0 +1,229 @@
+#games-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.game-card {
+    background-color: rgba(34, 41, 28, 0.9);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.game-card h2 {
+    margin-top: 0;
+    font-size: 35px;
+}
+
+.game-card p {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin: 20px 0;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card {
+    aspect-ratio: 1;
+    background-color: #2a3322;
+    border: 3px solid var(--textocolor);
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    transition: all 0.3s ease;
+    background-size: 70%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.card:hover {
+    background-color: #3a4332;
+    transform: scale(1.05);
+}
+
+.card.flipped {
+    background-color: var(--textocolor);
+    border-color: var(--hovertextocolor);
+}
+
+.card.matched {
+    background-color: var(--hovertextocolor);
+    border-color: #fff;
+    cursor: default;
+}
+
+.card.flipped[data-symbol="arbol"] {
+    background-image: url('../img/simbolos/arbol.jpg');
+}
+
+.card.flipped[data-symbol="estrella"] {
+    background-image: url('../img/simbolos/estrella.jpg');
+}
+
+.card.flipped[data-symbol="mano"] {
+    background-image: url('../img/simbolos/mano.jpg');
+}
+
+.card.flipped[data-symbol="llama"] {
+    background-image: url('../img/simbolos/llama.jpg');
+}
+
+.card.flipped[data-symbol="pez"] {
+    background-image: url('../img/simbolos/pez.jpg');
+}
+
+.card.flipped[data-symbol="piramide"] {
+    background-image: url('../img/simbolos/piramide.jpg');
+}
+
+.game-button {
+    background-color: var(--hovertextocolor);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+    margin: 20px auto;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.game-button:hover {
+    background-color: var(--hovertextocolor2);
+    transform: scale(1.05);
+}
+
+.game-button:disabled {
+    background-color: #666;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.game-status {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    min-height: 25px;
+}
+
+.game-content {
+    margin: 20px 0;
+}
+
+#question-container {
+    margin-bottom: 20px;
+}
+
+#question-text {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+#answers-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.answer-button {
+    background-color: #2a3322;
+    border: 2px solid var(--textocolor);
+    color: var(--textocolor);
+    padding: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    text-align: left;
+}
+
+.answer-button:hover {
+    background-color: #3a4332;
+    border-color: var(--hovertextocolor);
+}
+
+.answer-button.correct {
+    background-color: #2d5016;
+    border-color: #4caf50;
+}
+
+.answer-button.incorrect {
+    background-color: #5a1616;
+    border-color: #f44336;
+}
+
+.answer-button:disabled {
+    cursor: not-allowed;
+}
+
+.cipher-display {
+    background-color: #2a3322;
+    padding: 20px;
+    border-radius: 8px;
+    font-size: 24px;
+    text-align: center;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 2px;
+    margin: 20px 0;
+    border: 2px solid var(--textocolor);
+}
+
+.cipher-input {
+    width: 100%;
+    max-width: 500px;
+    padding: 15px;
+    font-size: 18px;
+    border: 2px solid var(--textocolor);
+    border-radius: 8px;
+    background-color: #2a3322;
+    color: var(--textocolor);
+    display: block;
+    margin: 20px auto;
+    box-sizing: border-box;
+}
+
+.cipher-input::placeholder {
+    color: rgba(187, 213, 186, 0.5);
+}
+
+.cipher-input:focus {
+    outline: none;
+    border-color: var(--hovertextocolor);
+}
+
+@media (max-width: 600px) {
+    .game-board {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .card {
+        font-size: 30px;
+    }
+    
+    .game-card {
+        padding: 20px;
+    }
+    
+    .cipher-display {
+        font-size: 18px;
+    }
+}
