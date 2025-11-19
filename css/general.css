@@ -72,7 +72,7 @@ h1 {
     text-align: center;
     margin-top: 20px;
     margin-bottom: 20px;
-    font-family: 'Montserrat', Standford Regular, Arial, Helvetica, sans-serif;
+    font-family: Standford Regular, Arial, Helvetica, sans-serif;
     font-size: 70px;
     font-weight: 700;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
@@ -101,7 +101,7 @@ h2 {
     text-align: center;
     margin-top: 20px;
     margin-bottom: 20px;
-    font-family: 'Montserrat', Standford Regular, Arial, Helvetica, sans-serif;
+    font-family: Standford Regular, Arial, Helvetica, sans-serif;
     font-size: 50px;
     font-weight: 600;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
