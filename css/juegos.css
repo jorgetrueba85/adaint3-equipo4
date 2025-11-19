@@ -100,7 +100,9 @@
     transition: all 0.3s ease;
     display: block;
     margin: 20px auto;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .game-button:hover {
@@ -154,6 +156,8 @@
     transition: all 0.3s ease;
     font-size: 16px;
     text-align: left;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
 }
 
 .answer-button:hover {
@@ -210,6 +214,68 @@
     border-color: var(--hovertextocolor);
 }
 
+#wheel-canvas {
+    display: block;
+    margin: 20px auto;
+    max-width: 100%;
+    height: auto;
+}
+
+.gnome-field {
+    width: 100%;
+    height: 400px;
+    background-color: #2a3322;
+    border: 3px solid var(--textocolor);
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    cursor: crosshair;
+    background-image: url('../img/bosque.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.gnome {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: var(--hovertextocolor);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.gnome:hover {
+    transform: scale(1.2);
+}
+
+.gnome.found {
+    background-color: #4caf50;
+    animation: fadeOut 0.5s forwards;
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        transform: scale(0);
+    }
+}
+
+.gnome-stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+.gnome-stats p {
+    font-size: 18px;
+    font-weight: bold;
+}
+
 @media (max-width: 600px) {
     .game-board {
         grid-template-columns: repeat(3, 1fr);
@@ -224,6 +290,21 @@
     }
     
     .cipher-display {
+        font-size: 18px;
+    }
+    
+    #wheel-canvas {
+        width: 300px;
+        height: 300px;
+    }
+    
+    .gnome-field {
+        height: 300px;
+    }
+    
+    .gnome {
+        width: 30px;
+        height: 30px;
         font-size: 18px;
     }
 }

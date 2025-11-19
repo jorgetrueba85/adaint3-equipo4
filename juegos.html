@@ -67,6 +67,29 @@
         <p id="cipher-result" class="game-status"></p>
       </div>
     </div>
+
+    <div class="game-card">
+      <h2>Rueda de la Fortuna Misteriosa</h2>
+      <p>Gira la rueda y descubre tu destino en Gravity Falls</p>
+      <div id="wheel-game" class="game-content">
+        <canvas id="wheel-canvas" width="400" height="400"></canvas>
+        <button id="spin-wheel" class="game-button">¡Girar!</button>
+        <p id="wheel-result" class="game-status"></p>
+      </div>
+    </div>
+
+    <div class="game-card">
+      <h2>Encuentra el Gnomo</h2>
+      <p>Los gnomos se esconden en el bosque. ¡Haz clic para encontrarlos!</p>
+      <div id="gnome-game" class="game-content">
+        <div id="gnome-field" class="gnome-field"></div>
+        <div class="gnome-stats">
+          <p>Gnomos encontrados: <span id="gnomes-found">0</span>/10</p>
+          <p>Tiempo: <span id="gnome-timer">30</span>s</p>
+        </div>
+        <button id="start-gnome" class="game-button">Comenzar</button>
+      </div>
+    </div>
   </main>
   <footer>
     <p>&copy; 2025 Derechos Reservados</p>
