@@ -11,14 +11,18 @@
       border: 1px solid #000000;
       padding: 8px;
       text-align: left;
+      font-family: 'Poppins', Arial, Helvetica, sans-serif;
     }
     th {
       background-color: #313131;
       color: var(--textocolor);
+      font-weight: 600;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
     }
     td {
       background-color: #444444;
-      color:var(--textocolor)
+      color:var(--textocolor);
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
     }
 
     td.tp2, th.tp2 {

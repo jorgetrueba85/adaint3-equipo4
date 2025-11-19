@@ -209,8 +209,196 @@ function checkCipher() {
     }
 }
 
+let wheelSegments = [
+    'Stan te estafa',
+    'Encuentras a Bill',
+    'Mabel te da un cerdo',
+    'Dipper te muestra el diario',
+    'Los gnomos te persiguen',
+    'Wendy te saluda',
+    'Soos cuenta un chiste',
+    'McGucket te inventa algo'
+];
+let isSpinning = false;
+
+function initWheelGame() {
+    const canvas = document.getElementById('wheel-canvas');
+    const ctx = canvas.getContext('2d');
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height / 2;
+    const radius = 180;
+    
+    drawWheel(ctx, centerX, centerY, radius);
+    
+    document.getElementById('spin-wheel').addEventListener('click', () => {
+        if (!isSpinning) {
+            spinWheel(ctx, centerX, centerY, radius);
+        }
+    });
+}
+
+function drawWheel(ctx, centerX, centerY, radius, rotation = 0) {
+    const numSegments = wheelSegments.length;
+    const anglePerSegment = (2 * Math.PI) / numSegments;
+    
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    
+    for (let i = 0; i < numSegments; i++) {
+        const startAngle = rotation + i * anglePerSegment;
+        const endAngle = startAngle + anglePerSegment;
+        
+        ctx.beginPath();
+        ctx.moveTo(centerX, centerY);
+        ctx.arc(centerX, centerY, radius, startAngle, endAngle);
+        ctx.closePath();
+        
+        ctx.fillStyle = i % 2 === 0 ? '#c1744e' : '#2a3322';
+        ctx.fill();
+        
+        ctx.strokeStyle = '#bbd5ba';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        
+        ctx.save();
+        ctx.translate(centerX, centerY);
+        ctx.rotate(startAngle + anglePerSegment / 2);
+        ctx.textAlign = 'center';
+        ctx.fillStyle = '#bbd5ba';
+        ctx.font = '14px Arial';
+        ctx.fillText(wheelSegments[i], radius * 0.65, 5);
+        ctx.restore();
+    }
+    
+    ctx.beginPath();
+    ctx.moveTo(centerX, centerY - radius - 20);
+    ctx.lineTo(centerX - 10, centerY - radius);
+    ctx.lineTo(centerX + 10, centerY - radius);
+    ctx.closePath();
+    ctx.fillStyle = '#c14e4e';
+    ctx.fill();
+}
+
+function spinWheel(ctx, centerX, centerY, radius) {
+    isSpinning = true;
+    const spinTime = 3000;
+    const spinRotations = 5 + Math.random() * 3;
+    const totalRotation = spinRotations * 2 * Math.PI;
+    let currentRotation = 0;
+    const startTime = Date.now();
+    
+    function animate() {
+        const elapsed = Date.now() - startTime;
+        const progress = Math.min(elapsed / spinTime, 1);
+        const easeOut = 1 - Math.pow(1 - progress, 3);
+        
+        currentRotation = easeOut * totalRotation;
+        drawWheel(ctx, centerX, centerY, radius, currentRotation);
+        
+        if (progress < 1) {
+            requestAnimationFrame(animate);
+        } else {
+            isSpinning = false;
+            showWheelResult(currentRotation);
+        }
+    }
+    
+    animate();
+}
+
+function showWheelResult(rotation) {
+    const numSegments = wheelSegments.length;
+    const anglePerSegment = (2 * Math.PI) / numSegments;
+    const normalizedRotation = rotation % (2 * Math.PI);
+    const segmentIndex = Math.floor(((2 * Math.PI - normalizedRotation) % (2 * Math.PI)) / anglePerSegment);
+    
+    const resultElement = document.getElementById('wheel-result');
+    resultElement.textContent = `¡${wheelSegments[segmentIndex]}!`;
+    resultElement.style.color = '#c1744e';
+}
+
+let gnomeTimer;
+let gnomesFound = 0;
+let timeLeft = 30;
+let gnomeGameActive = false;
+
+function initGnomeGame() {
+    document.getElementById('start-gnome').addEventListener('click', startGnomeGame);
+}
+
+function startGnomeGame() {
+    if (gnomeGameActive) return;
+    
+    gnomeGameActive = true;
+    gnomesFound = 0;
+    timeLeft = 30;
+    updateGnomeStats();
+    
+    const field = document.getElementById('gnome-field');
+    field.innerHTML = '';
+    
+    for (let i = 0; i < 10; i++) {
+        createGnome(field);
+    }
+    
+    gnomeTimer = setInterval(() => {
+        timeLeft--;
+        updateGnomeStats();
+        
+        if (timeLeft <= 0 || gnomesFound >= 10) {
+            endGnomeGame();
+        }
+    }, 1000);
+    
+    document.getElementById('start-gnome').disabled = true;
+}
+
+function createGnome(field) {
+    const gnome = document.createElement('div');
+    gnome.className = 'gnome';
+    gnome.textContent = '🧙';
+    
+    const maxX = field.clientWidth - 40;
+    const maxY = field.clientHeight - 40;
+    gnome.style.left = Math.random() * maxX + 'px';
+    gnome.style.top = Math.random() * maxY + 'px';
+    
+    gnome.addEventListener('click', function() {
+        if (!this.classList.contains('found')) {
+            this.classList.add('found');
+            gnomesFound++;
+            updateGnomeStats();
+            
+            if (gnomesFound >= 10) {
+                endGnomeGame();
+            }
+        }
+    });
+    
+    field.appendChild(gnome);
+}
+
+function updateGnomeStats() {
+    document.getElementById('gnomes-found').textContent = gnomesFound;
+    document.getElementById('gnome-timer').textContent = timeLeft;
+}
+
+function endGnomeGame() {
+    clearInterval(gnomeTimer);
+    gnomeGameActive = false;
+    document.getElementById('start-gnome').disabled = false;
+    
+    const resultText = gnomesFound >= 10 ? 
+        '¡Increíble! ¡Encontraste todos los gnomos!' : 
+        `Juego terminado. Encontraste ${gnomesFound}/10 gnomos.`;
+    
+    alert(resultText);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     initMemoryGame();
     initQuizGame();
     initCipherGame();
+    initWheelGame();
+    initGnomeGame();
 });
+
